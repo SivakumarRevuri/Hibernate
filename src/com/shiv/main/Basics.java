@@ -1,4 +1,4 @@
-package app;
+package com.shiv.main;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-import model.Employee;
+import com.shiv.model.Employee;
 
 public class Basics {
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration().configure("resources/hibernate.cfg.xml").buildSessionFactory();
+		SessionFactory factory = new Configuration().configure("com/shiv/resources/hibernate.cfg.xml").buildSessionFactory();
 		Session session = factory.openSession();
 	
 		// fetch single records
