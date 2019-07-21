@@ -1,0 +1,51 @@
+
+@Entity -- entity bean
+
+@Table -- to pass the table name instead of class name.
+
+@Id  -- to specify the primary key in table
+
+@Column  -- to specify the column name 
+
+@Transient -- to avoid storing the data to Hibernate
+
+@Basic -- for defalut configuration
+
+@Temporal(TemporalType.DATE) -- it will only saves the date with out time.
+	 (TemporalType.TIMESTAMP) -- it saves the field with date & time (default configuration).
+
+@LOB -- Large OBject(for character - CLOB, for byte stream - blob) huge amount of text(with out limitation).
+
+@Clob - Character Large Object 
+
+@GeneratedValue(strategy = GenerationType.AUTO) -- to auto generate the key
+
+@Embeddable -- hibernate won't generate a new/separate table 
+
+@Embedded -- It was a embedded field.
+
+@AnnotationOverride -- to override the field names
+
+@AnnotationOverrides -- it's combination of overrides.
+
+@EmbeddedId -- 
+
+
+----------------------------------- Save Collection--------------------------------------------------
+
+@ElementCollection -- to persist the collection data into DB. & class should be annotated as "@Embeddable"
+
+
+@JoinTable -- To configure the Joined table.
+	  (name = "table_name") -- name of the joined table.
+	  (joinColumns = @JoinColumn(name = "USER_ID")
+
+@GenericGenerator(name = "hilo-gen", strategy = "hilo")
+
+@CollectionId -- to specify the id, in the joined table.
+	(columns = {@Column(name="ADDRESS_ID")}, generator = "hilo-gen", type = @Type(type="long"))
+
+
+---------------------------------Eager & Lazy loading --------------------------------------------------
+
+ 

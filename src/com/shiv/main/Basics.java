@@ -11,28 +11,29 @@ import com.shiv.model.Employee;
 
 public class Basics {
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration().configure("com/shiv/resources/hibernate.cfg.xml").buildSessionFactory();
+		SessionFactory factory = new Configuration().configure("com/shiv/resources/hibernate.cfg.xml")
+				.buildSessionFactory();
 		Session session = factory.openSession();
-	
+
 		// fetch single records
 		new Basics().fetchRecords(session);
 		// to fetch multiple records
 		new Basics().fetchMultipleRecords(session);
 	}
-	
+
 	private void fetchMultipleRecords(Session session) {
 		String sql = "select empId,ename,job,salary from Employee";
 		@SuppressWarnings("unchecked")
-		Query<Object> query = session.createQuery(sql);
+		Query<Object> query = (Query<Object>) session.createQuery(sql);
 		List<Object> list = query.list();
-		
+
 		for (Object object : list) {
 			Object[] array = (Object[]) object;
 			for (Object values : array) {
 				System.out.println(values);
 			}
 		}
-		
+
 	}
 
 	private void fetchRecords(Session session) {
