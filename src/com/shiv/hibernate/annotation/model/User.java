@@ -1,10 +1,14 @@
 package com.shiv.hibernate.annotation.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,16 +24,27 @@ public class User {
 	private String userName;
 
 	@Column(name = "USER_ADDRESS")
-	private String userAddress;
+	private Address userAddress;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Orders> userOrders;
 
 	protected User() {
 		super();
 	}
 
-	public User(String userName, String userAddress) {
+	public User(String userName, Address userAddress) {
 		super();
 		this.userName = userName;
 		this.userAddress = userAddress;
+	}
+
+	public List<Orders> getUserOrders() {
+		return userOrders;
+	}
+
+	public void setUserOrders(List<Orders> userOrders) {
+		this.userOrders = userOrders;
 	}
 
 	public long getUserId() {
@@ -48,11 +63,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getUserAddress() {
+	public Address getUserAddress() {
 		return userAddress;
 	}
 
-	public void setUserAddress(String userAddress) {
+	public void setUserAddress(Address userAddress) {
 		this.userAddress = userAddress;
 	}
 
